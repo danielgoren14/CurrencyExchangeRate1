@@ -19,6 +19,7 @@ public class MainPanel extends JPanel {
     private JButton usdJpy;
     private JButton usdIls;
     private JButton eurIls;
+    private JLabel title;
 
     public MainPanel() {
         this.setBounds(0, 0, Window.WIDTH, Window.HEIGHT);

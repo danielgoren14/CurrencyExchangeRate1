@@ -23,7 +23,7 @@ public class Utils {
 
     public static void sleep (int seconds){
         try {
-            Thread.sleep(seconds*100);
+            Thread.sleep((long) seconds * SECOND);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
