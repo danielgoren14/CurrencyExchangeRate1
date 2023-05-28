@@ -12,6 +12,7 @@ public class Utils {
     public final static String USD_JPY= "USD/JPY";
     public final static String USD_ILS= "USD/ILS";
     public final static String EUR_ILS= "EUR/ILS";
+    public final static int SECOND = 1000;
     public static final Map<String , String> currency = new HashMap<>(){{
         put(USD_EUR ,"pair_1");
         put(GBP_USD , "pair_2");

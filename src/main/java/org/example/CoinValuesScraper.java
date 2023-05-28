@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class CoinValuesScraper extends Thread {
     private static String value;
-
+    private final int CHILD_INDEX = 3;
     public CoinValuesScraper() {
       checkValue();
     }
@@ -17,7 +17,7 @@ public class CoinValuesScraper extends Thread {
                 if (DisplayPanel.getUserChoice() != null) {
                     try {
                         Document document = Jsoup.connect(Utils.SITE_URL).get();
-                        this.value = document.getElementById(Utils.currency.get(DisplayPanel.getUserChoice())).child(3).text();
+                        value = document.getElementById(Utils.currency.get(DisplayPanel.getUserChoice())).child(CHILD_INDEX).text();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

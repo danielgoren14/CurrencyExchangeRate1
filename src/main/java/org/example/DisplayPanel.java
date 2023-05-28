@@ -83,6 +83,7 @@ public class DisplayPanel extends JPanel {
         this.add(currentValueLabel);
         setUserChoice("USD/EUR");
         displayCurrentCurrency();
+      //  displayCurrentCurrency1();
 
 
         this.exchangeNameLabel = new JLabel(userChoice);
@@ -102,15 +103,15 @@ public class DisplayPanel extends JPanel {
 
 
         this.delaySlider = new JSlider();
-        this.delaySlider.setBounds(100, 500, 350, 75);
-        this.delaySlider.setMinimum(0);
-        this.delaySlider.setMaximum(1000);
-        this.delaySlider.setMajorTickSpacing(100);
+        this.delaySlider.setBounds((Window.WIDTH - SLIDER_WIDTH) / 2, SLIDER_Y, SLIDER_WIDTH, SLIDER_HEIGHT);
+        this.delaySlider.setMinimum(MINIMUM_SLIDER);
+        this.delaySlider.setMaximum(MAXIMUM_SLIDER);
+        this.delaySlider.setMajorTickSpacing(MAJOR_TICK_SPACING);
         this.delaySlider.setPaintTicks(true);
-        this.delaySlider.setMinorTickSpacing(25);
+        this.delaySlider.setMinorTickSpacing(MINOR_TICK_SPACING);
         this.delaySlider.setPaintLabels(true);
         this.delaySlider.setPaintTrack(true);
-        this.delaySlider.setValue(1);
+        this.delaySlider.setValue(SLIDER_VALUE);
         this.delaySlider.setName("hey-");
         this.delaySlider.setToolTipText(this.delaySlider.getValue()+"");
         this.delaySlider.addChangeListener(e ->{
