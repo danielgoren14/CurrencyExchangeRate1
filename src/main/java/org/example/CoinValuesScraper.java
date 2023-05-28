@@ -8,7 +8,7 @@ public class CoinValuesScraper extends Thread {
     private static String value;
 
     public CoinValuesScraper() {
-        checkValue();
+      checkValue();
     }
 
     private void checkValue() {
@@ -21,6 +21,7 @@ public class CoinValuesScraper extends Thread {
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
+
                     Utils.sleep(DisplayPanel.getRefreshInterval());
                 }
             }

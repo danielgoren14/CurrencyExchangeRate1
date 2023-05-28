@@ -4,11 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainPanel extends JPanel {
-    private static final int BUTTON_WIDTH = 100;
-    private static final int BUTTON_HEIGHT = 30;
-    private static final int BUTTON_X = 225;
-    private static final int INITIAL_BUTTON_Y = 50;
-    private static final int MARGIN_FROM_BUTTON = 50;
+    private  final int BUTTON_WIDTH = 100;
+    private  final int BUTTON_HEIGHT = 30;
+    private  final int TITLE_Y = 50;
+    private  final int TITLE_FONT_SIZE = 30;
+    private  final int BUTTON_X = 225;
+    private  final int INITIAL_BUTTON_Y = 150;
+    private  final int MARGIN_FROM_BUTTON = 50;
+    private  final int LABEL_WIDTH = 350;
+    private  final int LABEL_HEIGHT = 100;
 
     private JButton usdEur;
     private JButton gbpUsd;
@@ -43,30 +47,28 @@ public class MainPanel extends JPanel {
         Utils.addButton(this, eurIls);
 
 
-        this.eurIls.addActionListener((event) -> {
-            DisplayPanel.setUserChoice(Utils.EUR_ILS);
-            Window.changePanel(Window.subMenu, this);
-        });
+        this.eurIls.addActionListener((event) -> buttonAction(Utils.EUR_ILS));
 
-        this.usdJpy.addActionListener((event) -> {
-            DisplayPanel.setUserChoice(Utils.USD_JPY);
-            Window.changePanel(Window.subMenu, this);
-        });
+        this.usdJpy.addActionListener((event) -> buttonAction(Utils.USD_JPY));
 
-        this.usdIls.addActionListener((event) -> {
-            DisplayPanel.setUserChoice(Utils.USD_ILS);
-            Window.changePanel(Window.subMenu, this);;
-        });
+        this.usdIls.addActionListener((event) -> buttonAction(Utils.USD_ILS));
 
-        this.gbpUsd.addActionListener((event) -> {
-            DisplayPanel.setUserChoice(Utils.GBP_USD);
-            Window.changePanel(Window.subMenu, this);
-        });
+        this.gbpUsd.addActionListener((event) -> buttonAction(Utils.GBP_USD));
 
-        this.usdEur.addActionListener((event) -> {
-            DisplayPanel.setUserChoice(Utils.USD_EUR);
-            Window.changePanel(Window.subMenu, this);
-        });
+        this.usdEur.addActionListener((event) -> buttonAction(Utils.USD_EUR));
+
+        this.title = new JLabel("currency exchange");
+        this.title.setBounds((Window.WIDTH - LABEL_WIDTH) / 2,TITLE_Y,LABEL_WIDTH,LABEL_HEIGHT);
+        this.title.setFont(new Font("Ariel", Font.BOLD, TITLE_FONT_SIZE));
+        this.title.setHorizontalAlignment(SwingConstants.CENTER);
+        this.title.setVerticalAlignment(SwingConstants.CENTER);
+        this.add(title);
+    }
+
+    private void buttonAction(String string){
+        DisplayPanel displayPanel = new DisplayPanel();
+        displayPanel.setUserChoice(string);
+        Window.changePanel(Window.subMenu, this);
     }
 
 }
