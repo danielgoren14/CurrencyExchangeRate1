@@ -48,15 +48,30 @@ public class MainPanel extends JPanel {
         Utils.addButton(this, eurIls);
 
 
-        this.eurIls.addActionListener((event) -> buttonAction(Utils.EUR_ILS));
+        this.eurIls.addActionListener((event) -> {
+            buttonAction(Utils.EUR_ILS);
+//            DisplayPanel.addNecessaryData();
+        });
 
-        this.usdJpy.addActionListener((event) -> buttonAction(Utils.USD_JPY));
+        this.usdJpy.addActionListener((event) -> {
+            buttonAction(Utils.USD_JPY);
+//            DisplayPanel.addNecessaryData();
+        });
 
-        this.usdIls.addActionListener((event) -> buttonAction(Utils.USD_ILS));
+        this.usdIls.addActionListener((event) -> {
+            buttonAction(Utils.USD_ILS);
+//            DisplayPanel.addNecessaryData();
+        });
 
-        this.gbpUsd.addActionListener((event) -> buttonAction(Utils.GBP_USD));
+        this.gbpUsd.addActionListener((event) -> {
+            buttonAction(Utils.GBP_USD);
+//            DisplayPanel.addNecessaryData();
+        });
 
-        this.usdEur.addActionListener((event) -> buttonAction(Utils.USD_EUR));
+        this.usdEur.addActionListener((event) -> {
+            buttonAction(Utils.USD_EUR);
+//            DisplayPanel.addNecessaryData();
+        });
 
         this.title = new JLabel("currency exchange");
         this.title.setBounds((Window.WIDTH - LABEL_WIDTH) / 2,TITLE_Y,LABEL_WIDTH,LABEL_HEIGHT);
@@ -67,9 +82,10 @@ public class MainPanel extends JPanel {
     }
 
     private void buttonAction(String string){
-        DisplayPanel displayPanel = new DisplayPanel();
-        displayPanel.setUserChoice(string);
+//        DisplayPanel displayPanel = new DisplayPanel();
+        DisplayPanel.setUserChoice(string);
         Window.changePanel(Window.subMenu, this);
+        DisplayPanel.addNecessaryData();
     }
 
 }

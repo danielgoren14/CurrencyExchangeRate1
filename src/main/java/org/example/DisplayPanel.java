@@ -25,6 +25,7 @@ public class DisplayPanel extends JPanel {
     private  final int MINIMUM_SLIDER = 0;
     private  final int MAXIMUM_SLIDER =1000;
     private  final int MAJOR_TICK_SPACING = 100;
+
     private  final int INPUT_TEXT_FIELD_Y =200;
     private  final int INPUT_TEXT_FIELD_HEIGHT = 30;
 
@@ -35,6 +36,7 @@ public class DisplayPanel extends JPanel {
     private JButton backButton;
     private JLabel currentValueLabel;
     private JLabel exchangeNameLabel;
+    private static JLabel labelAboveInput;
     private JTextField inputTextField;
     private JButton calculateButton;
     private JLabel conversionLabel;
@@ -52,6 +54,7 @@ public class DisplayPanel extends JPanel {
         this.backButton.setBounds((Window.WIDTH - BUTTON_WIDTH) / 2, BACK_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
         Utils.addButton(this, backButton);
         this.backButton.addActionListener((event) -> {
+            this.deleteUnnecessaryData();
             Window.changePanel(Window.mainMenu, this);
             this.delaySlider.setValue(SLIDER_VALUE);
         });
@@ -83,7 +86,6 @@ public class DisplayPanel extends JPanel {
         this.add(currentValueLabel);
         setUserChoice("USD/EUR");
         displayCurrentCurrency();
-      //  displayCurrentCurrency1();
 
 
         this.exchangeNameLabel = new JLabel(userChoice);
@@ -94,7 +96,15 @@ public class DisplayPanel extends JPanel {
         this.add(exchangeNameLabel);
 
 
-        this.inputTextField = new JTextField("enter sum to calculate current value");
+        labelAboveInput = new JLabel();
+        labelAboveInput.setBounds((Window.WIDTH - LABEL_WIDTH) / 2, 170,LABEL_WIDTH,30);
+        labelAboveInput.setVisible(true);
+        labelAboveInput.setEnabled(true);
+        this.add(labelAboveInput);
+
+
+
+        this.inputTextField = new JTextField();
         this.inputTextField.setBounds((Window.WIDTH - LABEL_WIDTH) / 2, INPUT_TEXT_FIELD_Y, LABEL_WIDTH, INPUT_TEXT_FIELD_HEIGHT);
         this.inputTextField.setHorizontalAlignment(SwingConstants.CENTER);
         this.inputTextField.setVisible(true);
@@ -130,6 +140,23 @@ public class DisplayPanel extends JPanel {
 
     }
 
+    public static String leftCurrency () {
+        return userChoice.substring(0,3);
+    }
+    public static String rightCurrency () {
+        return userChoice.substring(4,7);
+    }
+    private void deleteUnnecessaryData() {
+        if (this.conversionLabel.getText() != "") {
+            this.conversionLabel.setText("");
+        }
+        if (this.inputTextField.getText() != "") {
+            this.inputTextField.setText("");
+        }
+    }
+    public static void addNecessaryData () {
+        labelAboveInput.setText("enter how much " + leftCurrency() + " you want to convert to " + rightCurrency());
+    }
     public static String getUserChoice() {
         return userChoice;
     }
